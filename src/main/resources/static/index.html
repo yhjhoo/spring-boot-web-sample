@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+</head>
+<body>
+<script src="webjars/mustachejs/2.2.1/mustache.js"></script>
+
+<script id="template" type="template">
+    <h1>{{header}}</h1>
+    {{#bug}}
+    {{/bug}}
+
+    {{#items}}
+    {{#first}}
+    <li><strong>{{name}}</strong></li>
+    {{/first}}
+    {{#link}}
+    <li><a href="{{url}}">{{name}}</a></li>
+    {{/link}}
+    {{/items}}
+
+    {{#empty}}
+    <p>The list is empty.</p>
+    {{/empty}}
+</script>
+
+<div id="hello"></div>
+<script>
+    (function () {
+        var output = Mustache.render(document.getElementById("template").innerHTML, {
+            "header": "Colors",
+            "items": [
+                {"name": "red", "first": true, "url": "#Red"},
+                {"name": "green", "link": true, "url": "#Green"},
+                {"name": "blue", "link": true, "url": "#Blue"}
+            ],
+            "empty": false
+        });
+        console.log(output);
+        document.getElementById("hello").innerHTML = output;
+    })();
+</script>
+
+</body>
+</html>

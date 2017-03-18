@@ -10,8 +10,7 @@ pipeline {
         stage ('Initialize') {
             steps {
                 sh '''
-                    cf login -a api.run.pivotal.io -p ${PASSWORD} -u daliu@pivotal.io -o verydapeng.com -s dev
-                    cf a
+                    mvn package
                 '''
             }
         }

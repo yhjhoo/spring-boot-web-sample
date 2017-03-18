@@ -10,6 +10,7 @@ pipeline {
         stage ('Initialize') {
             steps {
                 sh '''
+                    echo password is ${PASSWORD}
                     mvn package
                 '''
             }

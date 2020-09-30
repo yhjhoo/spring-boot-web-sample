@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Download
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -10,9 +10,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'url'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'https://XXX'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -27,7 +27,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}" > a.txt
+      run: wget '${{ github.event.inputs.name }}'
     - name: archive
       uses: actions/upload-artifact@v2
       with:

@@ -23,7 +23,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: wget '${{ github.event.inputs.name }}'
+      run: wget '${{ github.event.inputs.name }}' -O 123.zip
     - name: archive
       uses: actions/upload-artifact@v2
       with:
